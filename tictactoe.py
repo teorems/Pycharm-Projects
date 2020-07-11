@@ -18,7 +18,7 @@ def verify():
     diag2 = [coordinates.get((1, 3)), coordinates.get((2, 2)), coordinates.get((3, 1))]
     tot_lines = [row1, row2, row3, col1, col2, col3, diag1, diag2]
 
-    def check(line):
+    def check():
         if "X" in line:
             return line[0] == line[1] == line[2]
         elif "O" in line:
@@ -27,7 +27,7 @@ def verify():
             return False
 
     for line in tot_lines:
-        if check(line):
+        if check():
             if "X" in line:
                 print("X wins")
                 return True
@@ -37,7 +37,7 @@ def verify():
     count = 0
     for c, v in coordinates.items():
         if (" " or "_") in v:
-                count += 1
+            count += 1
     if count == 0:
         print("Draw")
         return True
@@ -55,7 +55,7 @@ while True:
     if not move.replace(" ", "").isdigit():
         print("You should enter numbers!")
         continue
-    if (int(move[0]) or int(move[2])) > 3:
+    if (int(move[0]) > 3 or int(move[2])) > 3:
         print("Coordinates should be from 1 to 3!")
         continue
     move = tuple(int(x) for x in move.split())
@@ -77,7 +77,7 @@ while True:
         if not move.replace(" ", "").isdigit():
             print("You should enter numbers!")
             continue
-        if (int(move[0]) or int(move[2])) > 3:
+        if int(move[0]) > 3 or int(move[2]) > 3:
             print("Coordinates should be from 1 to 3!")
             continue
         move = tuple(int(x) for x in move.split())
