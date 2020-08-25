@@ -4,7 +4,7 @@ import sys
 
 conn = sqlite3.connect('card.s3db')
 c = conn.cursor()
-c.execute("DROP TABLE card")
+# c.execute("DROP TABLE card")
 c.execute("""CREATE TABLE IF NOT EXISTS card 
             (id INTEGER,number TEXT,pin TEXT,balance INTEGER DEFAULT 0);""")
 database = {}
